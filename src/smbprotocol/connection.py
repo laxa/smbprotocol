@@ -1288,7 +1288,8 @@ class Connection:
 
             header["credit_charge"] = credit_charge
             header["command"] = message.COMMAND
-            header["credit_request"] = credit_request if credit_request else credit_charge
+            # force max credits for each request
+            header["credit_request"] = 128
             header["message_id"] = current_id
             header["session_id"] = session_id
             header["data"] = message.pack()
